@@ -1,5 +1,6 @@
 const btnUpload = document.querySelector('#upload');
 const imageResult = document.querySelector('#image');
+const filenameResult = document.querySelector('#filename');
 const linkDownload = document.querySelector('#link');
 
 btnUpload.addEventListener('click',e=>{
@@ -25,6 +26,7 @@ const uploadFile = (formData) => {
         .then(data => {
 
             imageResult.src = data.Location;
+            filenameResult.value = data.key;
             linkDownload.href = data.Location;
         })
 };
