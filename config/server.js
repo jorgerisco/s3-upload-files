@@ -45,11 +45,11 @@ class Server {
     }
 
     listen(){
-        this.app.listen(this.port,()=>{
+        server = this.app.listen(this.port,()=>{
             console.log('Listening on port',this.port);
         });
 
-        this.app.listen.on('connection', function(socket) {
+        server.on('connection', function(socket) {
             // 10 minutes timeout
             socket.setTimeout(10 * 60 * 1000);
         });
