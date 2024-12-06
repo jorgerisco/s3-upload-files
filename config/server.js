@@ -35,6 +35,7 @@ class Server {
         this.app.use(fileUpload({
             useTempFiles : true,
             tempFileDir : '/tmp/',
+            uploadTimeout : 0,
             debug:true
         }));
     }
@@ -45,13 +46,8 @@ class Server {
     }
 
     listen(){
-        server = this.app.listen(this.port,()=>{
+        this.app.listen(this.port,()=>{
             console.log('Listening on port',this.port);
-        });
-
-        server.on('connection', function(socket) {
-            // 10 minutes timeout
-            socket.setTimeout(10 * 60 * 1000);
         });
     }
 
